@@ -1,0 +1,28 @@
+# Compiled
+*.elc
+
+# Packaging
+.cask/
+.eask/
+.eldev/
+.keg/
+
+# Built distribution
+dist/
+
+# Backup files
+*~
+
+# Undo-tree save-files
+*.~undo-tree
+
+# Data files
+history
+dape-breakpoints
+*.eld
+
+# Native compilation cache
+eln-cache/
+
+# Easy Customization file
+custom.el
