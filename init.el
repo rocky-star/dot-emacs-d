@@ -84,7 +84,8 @@
               ("stable-melpa" . 80)
               ("melpa" . 70))))
 
-  (package-autosuggest-mode))
+  (when (fboundp 'package-autosuggest-mode)
+    (package-autosuggest-mode))) ; Emacs 31
 
 (use-package help
   :defer t
@@ -104,7 +105,7 @@
           '((matches . (extrabold))
             (selection . (semibold italic text-also)))
           modus-themes-variable-pitch-ui t)
-  (load-theme 'modus-operandi-tinted t))
+  (modus-themes-load-theme 'modus-operandi-tinted))
 
 (use-package ligature
   :when (package-installed-p 'ligature)
@@ -177,7 +178,7 @@
 (use-package minibuffer
   :config
   (setopt completion-auto-select 'second-tab
-          minibuffer-visible-completions 'up-down
+          minibuffer-visible-completions (if (>= emacs-major-version 31) 'up-down t)
           completion-styles '(basic emacs22 flex)
           completions-detailed t
           completions-group t
