@@ -18,6 +18,7 @@ dist/
 
 # Data files
 history
+places
 dape-breakpoints
 *.eld
 
