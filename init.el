@@ -47,12 +47,18 @@
     (setenv varname (format "emacs --init-dir=%s " (shell-quote-argument user-emacs-directory))))
 
   (when (eq system-type 'windows-nt)
+    ;; Set PowerShell as the default shell.
     (catch 'found
       (dolist (shell-name '("pwsh" "PowerShell"))
         (let ((shell-path (executable-find shell-name)))
           (when shell-path
             (setopt shell-file-name shell-path)
-            (throw 'found nil))))))
+            (throw 'found nil)))))
+
+    ;; Use UNIX-like tools provided by Git on Windows.
+    (let ((git-bin "C:\\Program Files\\Git\\usr\\bin"))
+      (when (file-directory-p git-bin)
+        (setopt exec-path (cons git-bin exec-path)))))
 
   ;; files.el
   (setopt view-read-only t
