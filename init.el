@@ -169,7 +169,7 @@
   :hook (prog-mode text-mode))
 
 (use-package face-remap
-  :hook ((text-mode Info-mode) . variable-pitch-mode))
+  :hook (Info-mode . variable-pitch-mode))
 
 (use-package tooltip
   :config
