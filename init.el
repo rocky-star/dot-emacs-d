@@ -363,7 +363,6 @@
           dired-dwim-target t
           dired-kill-when-opening-new-dired-buffer t
           dired-listing-switches "-alh --group-directories-first"
-          dired-omit-files "^\\."
           dired-hide-details-hide-absolute-location t)) ; Emacs 31
 
 (use-package wdired
