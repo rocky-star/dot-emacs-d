@@ -633,6 +633,24 @@
                             (awk-mode . "awk")
                             (other . "stroustrup"))))
 
+(use-package python
+  :defer t
+  :preface
+  (defun my--python-add-prettify-symbols ()
+    "Add prettify symbols to the current Python buffer."
+    (setq-local prettify-symbols-alist
+                (append prettify-symbols-alist
+                        '(("and" . ?∧)
+                          ("for" . ?∀)
+                          ("in" . ?∈)
+			  ("is" . ?≡)
+			  ("is not" . ?≢)
+                          ("lambda" . ?λ)
+                          ("not" . ?¬)
+                          ("not in" . ?∉)
+                          ("or" . ?∨)))))
+  :hook (python-base-mode . my--python-add-prettify-symbols))
+
 (use-package pet
   :when (package-installed-p 'pet)
   :init
