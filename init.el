@@ -60,6 +60,15 @@
       (when (file-directory-p git-bin)
         (setopt exec-path (cons git-bin exec-path)))))
 
+  ;; EasyPG only trusts `epg-gpg-program' directly when it has a Customize
+  ;; value; otherwise it may still pick Git for Windows' MSYS gpg.exe.
+  (when (eq system-type 'windows-nt)
+    (let ((gpg-bin "C:/Program Files/GnuPG/bin/gpg.exe"))
+      (when (file-exists-p gpg-bin)
+        (customize-set-variable 'epg-gpg-program gpg-bin)
+        (when (boundp 'epg--configurations)
+          (setq epg--configurations nil)))))
+
   ;; files.el
   (setopt view-read-only t
           ;; TRAMP enhancements from
@@ -404,8 +413,8 @@
   :config
   (when (executable-find "rg")
     (setopt xref-search-program 'ripgrep))
-
-  (global-xref-mouse-mode))
+  (when (fboundp 'global-xref-mouse-mode) ; Emacs 31
+    (global-xref-mouse-mode)))
 
 (use-package imenu
   :defer t
