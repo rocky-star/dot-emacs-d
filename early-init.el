@@ -63,6 +63,10 @@
     (windows-2000 . ((default . "Lucida Console")
                      (variable-pitch . "Tahoma"))))
   "All available font presets for various platforms.")
+(defun my-font-family-member-p (family families)
+  "Return non-nil if FAMILY or its UTF-8 encoded name is in FAMILIES."
+  (or (member family families)
+      (member (encode-coding-string family 'utf-8) families)))
 (defun my-font-preset-get-first-available (&optional frame)
   "Find the first available font preset of the FRAME."
   (let ((families (font-family-list frame)))
@@ -70,7 +74,7 @@
       (dolist (preset my-font-presets)
         (when (catch 'family
                 (dolist (family (mapcar #'cdr (cdr preset)))
-                  (unless (member family families)
+                  (unless (my-font-family-member-p family families)
                     (throw 'family nil)))
                 t)
           (throw 'preset preset)))
