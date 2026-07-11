@@ -509,11 +509,10 @@
 
 (use-package eglot-booster
   :when (and (package-installed-p 'eglot-booster)
-             (executable-find "emacs-lsp-booster"))
+             (executable-find "emacs-lsp-booster")
+	     (< emacs-major-version 30))
   :after eglot
   :config
-  (when (>= emacs-major-version 30)
-    (setopt eglot-booster-io-only t))
   (setopt eglot-booster-no-remote-boost t)
   (eglot-booster-mode))
 
