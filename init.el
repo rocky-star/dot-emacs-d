@@ -583,7 +583,8 @@
 (use-package treesit
   :defer t
   :config
-  (setopt treesit-font-lock-level 4))
+  (setopt treesit-font-lock-level 4
+	  treesit-enabled-modes '(python-ts-mode))) ; Emacs 31
 
 (use-package which-func
   :config
