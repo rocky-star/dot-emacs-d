@@ -46,7 +46,7 @@
   '((sarasa . ((default . "Sarasa Term SC")
                (fixed-pitch . "Sarasa Fixed SC")
                (fixed-pitch-serif . "Sarasa Fixed Slab SC")
-               (variable-pitch . "Sarasa UI SC")))
+               (variable-pitch . "更纱黑体 UI SC")))
     (windows-11 . ((default . "Cascadia Code")
                    (fixed-pitch . "Cascadia Mono")
                    (variable-pitch . "Segoe UI Variable Small")))
