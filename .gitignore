@@ -27,3 +27,12 @@ eln-cache/
 
 # Easy Customization file
 custom.el
+
+# ELPA packages
+elpa/
+
+# TRAMP data
+tramp
+
+# Tree sitter compiled grammars
+tree-sitter/
