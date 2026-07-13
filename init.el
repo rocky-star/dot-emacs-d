@@ -46,6 +46,9 @@
   (dolist (varname '("GIT_EDITOR" "JJ_EDITOR"))
     (setenv varname (format "emacs --init-dir=%s " (shell-quote-argument user-emacs-directory))))
 
+  ;; Use image-only tool bar buttons.
+  (setopt tool-bar-style 'image)
+
   (when (eq system-type 'windows-nt)
     ;; Set PowerShell as the default shell.
     (catch 'found
