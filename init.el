@@ -657,7 +657,7 @@
 (use-package pet
   :when (package-installed-p 'pet)
   :init
-  (add-hook 'python-base-mode 'pet-mode -10))
+  (add-hook 'python-base-mode-hook #'pet-mode -10))
 
 ;;; WRITING
 
